@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boxing Round Timer Online: Free, With Bell Sound | Box AI</title>
+<meta name="description" content="Free boxing round timer that runs in your browser. Set your rounds, round length and rest, with bell sounds, a warning near round end and your screen kept awake.">
+<link rel="canonical" href="{{SITE_URL}}/boxing-round-timer">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Box AI">
+<meta property="og:url" content="{{SITE_URL}}/boxing-round-timer">
+<meta property="og:title" content="Free boxing round timer with bell sound">
+<meta property="og:description" content="Set your rounds, round length and rest. Runs in your browser, with nothing to install.">
+<meta property="og:image" content="{{SITE_URL}}/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#09090B">
+<link rel="icon" type="image/png" href="/assets/icon-96.png">
+<link rel="preload" href="/assets/barlow-900i.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Boxing Round Timer",
+      "url": "{{SITE_URL}}/boxing-round-timer",
+      "description": "A free browser-based boxing round timer with adjustable rounds, round length and rest, bell sounds, a warning near round end and a screen wake lock.",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Sound uses the Web Audio API.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "datePublished": "2026-11-05",
+      "dateModified": "2026-11-05",
+      "image": "{{SITE_URL}}/assets/og.jpg",
+      "author": { "@type": "Organization", "name": "Box AI", "url": "{{SITE_URL}}/" },
+      "publisher": { "@type": "Organization", "name": "Box AI", "logo": { "@type": "ImageObject", "url": "{{SITE_URL}}/assets/icon.png" } }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Box AI", "item": "{{SITE_URL}}/" },
+        { "@type": "ListItem", "position": 2, "name": "Boxing round timer" }
+      ]
+    }
+    <!--faq-schema-->
+  ]
+}
+</script>
+</head>
+<body>
+<div class="page-bar">
+  <a class="brand" href="/"><img src="/assets/icon-96.png" alt="" width="30" height="30"><span>BOX AI</span></a>
+  <a class="join" href="#email">Join the waitlist</a>
+</div>
+
+<main class="article">
+  <p class="crumbs"><a href="/">Box AI</a> / Free tools</p>
+  <h1>Boxing round timer</h1>
+
+  <section class="timer" aria-label="Timer settings">
+    <div class="presets" role="group" aria-label="Presets">
+      <button type="button" data-preset="5,120,60">Beginner</button>
+      <button type="button" data-preset="3,180,60">Amateur</button>
+      <button type="button" data-preset="12,180,60">Pro</button>
+      <button type="button" data-preset="10,120,60">Women's pro</button>
+    </div>
+
+    <div class="steppers">
+      <div class="stepper" data-field="rounds">
+        <span class="stepper-label" id="label-rounds">Rounds</span>
+        <div class="stepper-controls">
+          <button type="button" data-step="-1" aria-label="Fewer rounds">−</button>
+          <output aria-labelledby="label-rounds" aria-live="polite"></output>
+          <button type="button" data-step="1" aria-label="More rounds">+</button>
+        </div>
+      </div>
+      <div class="stepper" data-field="round">
+        <span class="stepper-label" id="label-round">Round length</span>
+        <div class="stepper-controls">
+          <button type="button" data-step="-1" aria-label="Shorter rounds">−</button>
+          <output aria-labelledby="label-round" aria-live="polite"></output>
+          <button type="button" data-step="1" aria-label="Longer rounds">+</button>
+        </div>
+      </div>
+      <div class="stepper" data-field="rest">
+        <span class="stepper-label" id="label-rest">Rest</span>
+        <div class="stepper-controls">
+          <button type="button" data-step="-1" aria-label="Less rest">−</button>
+          <output aria-labelledby="label-rest" aria-live="polite"></output>
+          <button type="button" data-step="1" aria-label="More rest">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="warning-row">
+      <span id="label-warning">Warning before round end</span>
+      <div class="presets" role="group" aria-labelledby="label-warning">
+        <button type="button" data-warn="0">Off</button>
+        <button type="button" data-warn="10">10s</button>
+        <button type="button" data-warn="30">30s</button>
+      </div>
+    </div>
+
+    <button type="button" class="timer-start" id="timer-start">Start</button>
+    <div class="timer-foot">
+      <span id="timer-total"></span>
+      <button type="button" id="timer-test">Test the bell</button>
+    </div>
+    <noscript><p class="note is-error">This timer needs JavaScript. Please turn it on to use it.</p></noscript>
+  </section>
+  <p class="small timer-tip">Free, with no signup and nothing to install. On iPhone, switch off silent mode or you won't hear the bell.</p>
+
+  <h2>How long is a boxing round?</h2>
+  <p class="answer"><strong>A standard boxing round lasts three minutes, with one minute of rest between rounds.</strong> Olympic bouts and men's professional fights both use that format. Women's professional fights often use two-minute rounds, and beginners usually do best starting with two minutes.</p>
+  <div class="table-wrap" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">Level</th><th scope="col">Rounds</th><th scope="col">Round</th><th scope="col">Rest</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Olympic</th><td>3</td><td>3 minutes</td><td>1 minute</td></tr>
+        <tr><th scope="row">Men's pro</th><td>Up to 12</td><td>3 minutes</td><td>1 minute</td></tr>
+        <tr><th scope="row">Women's pro</th><td>Up to 10 or 12</td><td>2 minutes, some 3</td><td>1 minute</td></tr>
+        <tr><th scope="row">Beginner at home (our suggestion)</th><td>3 to 5</td><td>2 minutes</td><td>1 minute</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Round lengths for women's pro fights vary. The WBC has kept two-minute rounds, while some title fights under other sanctioning bodies have gone to 12 three-minute rounds. Rules for youth and novice boxers vary by age and country, so check with your local federation before a competition.</p>
+
+  <h2>How to use this timer</h2>
+  <ol>
+    <li><strong>Set your session.</strong> Pick a preset or adjust the rounds, round length and rest. The timer remembers your settings on this device.</li>
+    <li><strong>Test the bell.</strong> Turn your volume up until you can hear it from where you'll train.</li>
+    <li><strong>Press Start.</strong> You get a 10-second countdown to put your phone down and get your guard up.</li>
+    <li><strong>Listen for the sounds.</strong> One bell starts a round and three bells end it. Three wooden clacks are your warning that time is nearly up, and the same clacks tell you when rest is about to end.</li>
+  </ol>
+  <p>New to this? Use the timer with our <a href="/guides/shadow-boxing-for-beginners">15-minute shadow boxing routine for beginners</a>, which the Beginner preset fits.</p>
+
+  <section class="cta">
+    <h2>Find out what your rounds look like</h2>
+    <p>Box AI is an AI boxing coach for iPhone. Film a round and get grades, fixes and a matching drill. Join the waitlist and we'll email you at launch.</p>
+    <form class="signup" action="/api/waitlist" method="post" novalidate data-place="timer">
+      <label class="sr-only" for="email">Email address</label>
+      <input id="email" name="email" type="email" placeholder="Your email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" required>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <button type="submit">Get early access</button>
+    </form>
+    <p class="note" role="status">Free to join. One email when we launch. No spam.</p>
+  </section>
+
+  <h2>Questions about the round timer</h2>
+  <div class="faqs">
+    <details class="faq" open><summary>Is this boxing timer free?</summary><div><p>Yes. It runs in your browser, with no signup and nothing to install. Your settings stay on your device.</p></div></details>
+    <details class="faq"><summary>Why can't I hear the bell?</summary><div><p>On iPhone, browser sounds follow the silent switch, so turn silent mode off. Then check your volume and use Test the bell before you start.</p></div></details>
+    <details class="faq"><summary>Will my phone's screen stay on?</summary><div><p>In browsers that support it, yes. The timer asks your browser to keep the screen awake during a session and tells you if it can't. If it can't, turn off auto-lock in your phone's settings while you train.</p></div></details>
+    <details class="faq"><summary>Does the timer keep running in the background?</summary><div><p>The clock always stays correct, even if you switch away, because it counts from the time you started. On a computer, the bells should keep ringing in a background tab. On phones, browsers can pause sound when you lock the screen or switch apps, especially Safari on iPhone. For reliable bells on a phone, keep this page open on screen.</p></div></details>
+    <details class="faq"><summary>Can I play music at the same time?</summary><div><p>Usually, yes. The bells play alongside your music app on most phones, though this depends on your device and browser. Test it before your session.</p></div></details>
+    <details class="faq"><summary>How many rounds should a beginner do?</summary><div><p>Start with three to five rounds of two minutes each, with one minute of rest. Add rounds or move to three-minute rounds once that feels comfortable.</p></div></details>
+  </div>
+
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li><a href="https://www.olympics.com/en/news/wrestling-judo-boxing-and-taekwondo-your-guide-to-combat-sports-at-paris-2024" rel="noopener">Your guide to combat sports at Paris 2024</a>, Olympics.com</li>
+    <li><a href="https://en.wikipedia.org/wiki/Boxing" rel="noopener">Boxing</a>, Wikipedia</li>
+    <li><a href="https://www.espn.com/boxing/story/_/id/38338706/serrano-ramos-women-title-bout-set-12-three-minute-rounds" rel="noopener">Serrano-Ramos women's title bout set for 12 three-minute rounds</a>, ESPN</li>
+    <li><a href="https://www.espn.com/boxing/story/_/id/31770845/more-more-opportunity-three-minute-rounds-coming-women-boxing" rel="noopener">Are three-minute rounds coming to women's boxing?</a>, ESPN</li>
+  </ul>
+  <p class="small">General training information, not medical advice. Warm up first, stop if you feel pain, and check with a doctor before starting a new exercise program.</p>
+</main>
+
+<dialog class="live" id="timer-live" aria-label="Round timer running">
+  <div class="live-top">
+    <p class="live-phase" id="live-phase"></p>
+    <p class="live-next" id="live-next"></p>
+  </div>
+  <div class="live-clock" id="live-clock" role="timer" aria-live="off"></div>
+  <div class="live-bar" aria-hidden="true"><i id="live-bar"></i></div>
+  <p class="sr-only" id="live-announce" role="status"></p>
+  <div class="live-actions">
+    <button type="button" class="live-main" id="live-main">Pause</button>
+    <div class="live-minor" id="live-minor" hidden>
+      <button type="button" id="live-skip">Skip</button>
+      <button type="button" id="live-end">End session</button>
+    </div>
+    <p class="live-status" id="live-status"></p>
+  </div>
+</dialog>
+
+<footer class="foot">
+  <span>© 2026 Box AI</span>
+  <nav aria-label="Footer"><a href="/">Home</a><a href="/guides/shadow-boxing-for-beginners">Shadow boxing</a><a href="/guides/learn-boxing-at-home">Learn at home</a><a href="/guides/ai-boxing-coach">AI coaches</a><a href="/privacy">Privacy</a></nav>
+</footer>
+<script src="/app.js" defer></script>
+<script src="/timer.js" defer></script>
+</body>
+</html>

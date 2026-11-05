@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{SITE_URL}}/</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>{{SITE_URL}}/boxing-round-timer</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>{{SITE_URL}}/guides/learn-boxing-at-home</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>{{SITE_URL}}/guides/shadow-boxing-for-beginners</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>{{SITE_URL}}/guides/ai-boxing-coach</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>{{SITE_URL}}/privacy</loc><lastmod>2026-11-05</lastmod></url>
+</urlset>

@@ -1,0 +1,21 @@
+# Box AI (boxing coach app)
+
+> Box AI is an AI boxing coach app for iPhone. It grades filmed rounds on offense, defense, footwork and guard, runs camera pad drills that call punches and time reactions, and builds weekly boxing training plans. It is launching soon and has a public waitlist. It is not affiliated with Box, Inc. or the "Box AI" features of the Box cloud content platform.
+
+## Key facts
+
+- Status: pre-launch, waitlist open. No launch date has been announced.
+- Platform: iPhone, iOS 18 or later. No Android version has been announced.
+- Price: free to download. A Box AI Pro subscription is required to use the features. Prices are shown in the app before purchase.
+- For: complete beginners learning boxing at home, fitness boxers and amateur fighters training between gym sessions.
+- Equipment: an iPhone and a few feet of space. No bag, partner or gloves required.
+- Limits: non-contact training only. Grades are AI estimates from one camera angle. The app doesn't measure punch power and doesn't replace an in-person coach.
+
+## Pages
+
+- [Home and waitlist]({{SITE_URL}}/): what Box AI does, how it compares with YouTube and an in-person coach, FAQs and signup
+- [Free boxing round timer]({{SITE_URL}}/boxing-round-timer): browser-based timer with adjustable rounds, round length and rest, bell sounds and a warning near round end, plus standard round lengths by level
+- [Can you learn boxing at home?]({{SITE_URL}}/guides/learn-boxing-at-home): what you can and can't learn alone, with a 6-week plan
+- [How to shadow box for beginners]({{SITE_URL}}/guides/shadow-boxing-for-beginners): steps, a 15-minute routine, first combos and common mistakes
+- [Do AI boxing coaches work?]({{SITE_URL}}/guides/ai-boxing-coach): what these apps do well, where they fall short and how to choose one
+- [Waitlist privacy]({{SITE_URL}}/privacy)

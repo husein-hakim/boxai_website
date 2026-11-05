@@ -1,0 +1,8 @@
+{
+  "name": "box-ai-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev.mjs"
+  }
+}
