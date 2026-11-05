@@ -1,0 +1,4 @@
+dist/
+.vercel/
+.waitlist-dev.jsonl
+.DS_Store

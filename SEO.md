@@ -66,7 +66,7 @@ Set `POSTHOG_KEY` in Vercel to turn on anonymous events. Use a link like this in
 
 `https://yourdomain.com/?utm_source=tiktok&utm_medium=bio`
 
-Use `utm_content=<video-name>` wherever you can set a link per video. The funnel to watch is `$pageview` → `waitlist_email_focused` → `waitlist_joined`, split by `in_app_browser` and `utm_content`. The round timer also sends `timer_started` with the session settings, to show how many visitors use it.
+Use `utm_content=<video-name>` wherever you can set a link per video. All website events start with `baw_`. The funnel to watch is `baw_pageview` → `baw_waitlist_email_focused` → `baw_waitlist_joined`, split by `in_app_browser` and `utm_content`. The round timer also sends `baw_timer_started` with the session settings, to show how many visitors use it.
 
 ## Action plan
 

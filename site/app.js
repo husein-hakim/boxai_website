@@ -18,16 +18,17 @@ const context = {
   in_app_browser: /BytedanceWebview|musical_ly|TikTok/i.test(navigator.userAgent) ? "tiktok" : /Instagram|FBAN|FBAV/.test(navigator.userAgent) ? "meta" : "none",
   ...Object.fromEntries(["utm_source", "utm_medium", "utm_campaign", "utm_content"].filter((k) => params.has(k)).map((k) => [k, params.get(k)])),
 };
+// Every event name gets the baw_ prefix, so website events stay separate from the app's in PostHog.
 function track(event, properties = {}) {
   if (!POSTHOG_KEY) return;
   fetch("https://us.i.posthog.com/i/v0/e/", {
     method: "POST",
     keepalive: true,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ api_key: POSTHOG_KEY, event, distinct_id: visitor, properties: { ...context, ...properties } }),
+    body: JSON.stringify({ api_key: POSTHOG_KEY, event: `baw_${event}`, distinct_id: visitor, properties: { ...context, ...properties } }),
   }).catch(() => {});
 }
-track("$pageview");
+track("pageview");
 document.addEventListener("timer:started", ({ detail }) => track("timer_started", detail)); // Sent by timer.js
 
 // Hero overlay, showing what Live Pads displays on a hit
