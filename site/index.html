@@ -96,6 +96,7 @@
       <button type="submit">Get early access</button>
     </form>
     <p class="note" role="status">Free to join. One email when we launch. No spam.</p>
+    <a class="try-link" href="#try" data-open-pad="hero"><i aria-hidden="true"></i>Or try a pad round first<span>15 sec</span></a>
   </div>
 </header>
 
@@ -112,6 +113,17 @@
       <li><b>Box a round</b><span>Follow Live Pads, where the camera calls each punch, or film your own shadow boxing, bag work or pad work.</span></li>
       <li><b>Fix one thing</b><span>Get your grades, timestamped fixes like “rear hand drops on the hook,” and the exact drill for each one.</span></li>
     </ol>
+  </section>
+
+  <section class="band" id="try" aria-labelledby="try-title">
+    <div class="try-card">
+      <img src="/assets/screen-live.webp" width="540" height="1174" loading="lazy" decoding="async" alt="Live Pads screen showing a hit in 312 milliseconds, with the jab recognized and a combo of three.">
+      <div>
+        <h2 id="try-title">Try Live Pads in your browser</h2>
+        <p>Prop up your phone and throw six punches. The camera calls each one and times your reaction. It takes about 15 seconds, and your video stays on your device.</p>
+        <a class="try-button" href="#try" data-open-pad="section">Start a pad round</a>
+      </div>
+    </div>
   </section>
 
   <section class="band rail-band" aria-labelledby="inside">
@@ -183,6 +195,7 @@
       <details class="faq"><summary>Can you learn boxing at home without a coach?</summary><div><p>You can learn the fundamentals at home: stance, guard, the basic punches, footwork and simple defense. Timing against a live opponent takes a gym. Our guide on <a href="/guides/learn-boxing-at-home">learning boxing at home</a> covers what to practice and how to check your form.</p></div></details>
       <details class="faq"><summary>Do I need a punching bag or gloves?</summary><div><p>No. Live Pads and shadow boxing only need your iPhone and a few feet of space. If you have a bag or a pad partner, you can film that work for review too.</p></div></details>
       <details class="faq"><summary>Is Box AI good for complete beginners?</summary><div><p>Yes. The plan adapts to your level, and the drill path starts with stance, guard and your first punches. New to all of this? Start with <a href="/guides/shadow-boxing-for-beginners">shadow boxing for beginners</a>.</p></div></details>
+      <details class="faq"><summary>Can I try Box AI before it launches?</summary><div><p>You can try a short version of Live Pads in your browser, with no signup or install. The camera calls six punches and times your reaction. It runs on your device, and your video isn't recorded or uploaded. It only checks jabs and crosses, and the app's round grading isn't part of it.</p></div></details>
       <details class="faq"><summary>How much will Box AI cost?</summary><div><p>Box AI will be free to download, and a Box AI Pro subscription is required to use its features. Prices will be shown in the app before you buy. Joining the waitlist is free and doesn't commit you to anything.</p></div></details>
       <details class="faq"><summary>When does it launch, and is it on Android?</summary><div><p>Box AI is launching on iPhone first and needs iOS 18 or later. We haven't announced a launch date or an Android version. Join the waitlist and we'll email you the day it's available.</p></div></details>
       <details class="faq"><summary>Is this the same as Box AI from Box.com?</summary><div><p>No. This Box AI is a boxing training app. It has no connection to Box, Inc., the cloud content company, which uses the same name for its AI features.</p></div></details>
@@ -219,6 +232,55 @@
 </footer>
 
 <a class="sticky" href="#top" hidden>Get early access</a>
+
+<dialog class="pad" id="pad" aria-label="Try a pad round" data-state="intro" data-cue="off">
+  <div class="pad-stage">
+    <video playsinline muted autoplay aria-hidden="true"></video>
+    <canvas aria-hidden="true"></canvas>
+    <div class="pad-target" aria-hidden="true"></div>
+    <div class="pad-cue" aria-live="assertive"><p class="pad-word"></p><p class="pad-hand"></p></div>
+    <div class="pad-hit" role="status" hidden><b></b><span></span><em></em></div>
+    <p class="pad-status" role="status"></p>
+    <div class="pad-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <button class="pad-close" type="button" aria-label="Close">×</button>
+
+  <section class="pad-sheet pad-intro">
+    <h2>Try a pad round</h2>
+    <ol>
+      <li>Prop your phone up at chest height.</li>
+      <li>Step back until your head, shoulders and both hands show.</li>
+      <li>Throw the punch it calls, as fast as you can.</li>
+    </ol>
+    <label class="pad-southpaw"><input type="checkbox"> I box southpaw (right hand forward)</label>
+    <button class="pad-start" type="button">Start round</button>
+    <p class="pad-small">Your video stays on your device. Nothing is recorded or uploaded. First run downloads about 8 MB.</p>
+  </section>
+
+  <section class="pad-sheet pad-result">
+    <h2 class="pad-result-title"></h2>
+    <dl class="pad-stats" hidden>
+      <div><dt>Average</dt><dd data-stat="average"></dd></div>
+      <div><dt>Best</dt><dd data-stat="best"></dd></div>
+      <div><dt>Hits</dt><dd data-stat="hits"></dd></div>
+    </dl>
+    <p class="pad-result-body"></p>
+    <form class="signup" action="/api/waitlist" method="post" novalidate data-place="demo">
+      <label class="sr-only" for="email-demo">Email address</label>
+      <input id="email-demo" name="email" type="email" placeholder="Your email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" required>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <button type="submit">Get early access</button>
+    </form>
+    <p class="note" role="status">Free to join. One email when we launch. No spam.</p>
+    <div class="pad-actions">
+      <button class="pad-again" type="button">Go again</button>
+      <button class="pad-copy" type="button">Copy link to open elsewhere</button>
+    </div>
+    <p class="pad-small pad-estimate">A browser demo. Times are estimates from your camera.</p>
+  </section>
+</dialog>
+
 <script src="/app.js" defer></script>
 </body>
 </html>

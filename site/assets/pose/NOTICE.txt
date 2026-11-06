@@ -1,0 +1,3 @@
+litert.js and wasm/: LiteRT.js (@litertjs/core 2.6.0), Copyright Google LLC, Apache License 2.0.
+movenet_lightning_fp16.tflite: MoveNet SinglePose Lightning, Copyright Google LLC, Apache License 2.0.
+https://www.apache.org/licenses/LICENSE-2.0

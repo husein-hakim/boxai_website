@@ -14,6 +14,7 @@
 ## Pages
 
 - [Home and waitlist]({{SITE_URL}}/): what Box AI does, how it compares with YouTube and an in-person coach, FAQs and signup
+- [Try Live Pads in your browser]({{SITE_URL}}/#try): a 15-second demo of the app's camera pad drill. It calls six jabs and crosses and times the reaction. It runs on the device, with no signup, and doesn't record or upload video
 - [Free boxing round timer]({{SITE_URL}}/boxing-round-timer): browser-based timer with adjustable rounds, round length and rest, bell sounds and a warning near round end, plus standard round lengths by level
 - [Can you learn boxing at home?]({{SITE_URL}}/guides/learn-boxing-at-home): what you can and can't learn alone, with a 6-week plan
 - [How to shadow box for beginners]({{SITE_URL}}/guides/shadow-boxing-for-beginners): steps, a 15-minute routine, first combos and common mistakes

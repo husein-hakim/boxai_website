@@ -2,6 +2,10 @@
 
 Static pages in `site/`, built to `dist/` by `build.mjs`, plus one Vercel function (`api/waitlist.js`) that saves signups to Resend Contacts. See [SEO.md](SEO.md) for the keyword research and action plan.
 
+## Pad round demo
+
+`#try` on the home page opens a 15-second Live Pads demo. `site/pad-round.js` runs the camera and the round, and `site/pad-logic.js` detects punches from pose keypoints (`npm test` covers it with synthetic traces). `site/assets/pose/` holds LiteRT.js and the same MoveNet Lightning model the app uses. None of this loads with the page: the script loads when the overlay opens, and the runtime and model when someone taps Start. No video leaves the device. The detector is written for the site and doesn't share code with the app's recognizer. Camera access needs HTTPS or localhost, so test on a phone through a Vercel deployment.
+
 ## Run locally
 
 ```bash

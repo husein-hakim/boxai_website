@@ -177,3 +177,70 @@ if (sticky && forms.length) {
     forms[0].scrollIntoView({ block: "center" });
   });
 }
+
+// Pad round: the waitlist stays the first screen, and this opens over it. Nothing loads with
+// the page: the script loads on open, and the runtime and model after a tap on Start.
+const pad = document.getElementById("pad");
+if (pad) {
+  let round = null;
+  let loading = null;
+  const load = () => {
+    loading ??= import("/pad-round.js").then(({ createPadRound }) => {
+      round = createPadRound(pad, { track });
+    });
+    return loading;
+  };
+  const open = (place) => {
+    if (pad.open) return;
+    track("demo_opened", { place });
+    pad.showModal();
+    load().catch(() => (loading = null));
+  };
+  const begin = async () => {
+    track("demo_start_clicked");
+    try {
+      // Normally loaded by now, so this runs inside the tap, which browsers require for sound.
+      if (!round) await load();
+      await round.start();
+    } catch (error) {
+      console.error(error);
+      loading = null;
+      track("demo_failed", { reason: "script_failed" });
+      pad.dataset.state = "blocked";
+      pad.querySelector(".pad-result-title").textContent = "This browser couldn't load the demo";
+      pad.querySelector(".pad-result-body").textContent = "You can still join the waitlist below.";
+    }
+  };
+
+  document.querySelectorAll("[data-open-pad]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      open(link.dataset.openPad);
+    });
+  });
+  pad.querySelector(".pad-start").addEventListener("click", begin);
+  pad.querySelector(".pad-again").addEventListener("click", begin);
+  pad.querySelector(".pad-close").addEventListener("click", () => pad.close());
+  pad.addEventListener("close", () => {
+    round?.stop();
+    pad.dataset.state = "intro";
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && pad.open) round?.stop(); // Turns the camera off when someone leaves
+  });
+
+  const copy = pad.querySelector(".pad-copy");
+  copy.addEventListener("click", async () => {
+    const url = new URL(location.href);
+    url.hash = "try";
+    track("demo_link_copied");
+    try {
+      await navigator.clipboard.writeText(url.href);
+      copy.textContent = "Link copied. Paste it in Safari or Chrome";
+    } catch {
+      copy.textContent = url.href;
+    }
+  });
+
+  if (location.hash === "#try") open("link");
+}

@@ -68,6 +68,8 @@ Set `POSTHOG_KEY` in Vercel to turn on anonymous events. Use a link like this in
 
 Use `utm_content=<video-name>` wherever you can set a link per video. All website events start with `baw_`. The funnel to watch is `baw_pageview` → `baw_waitlist_email_focused` → `baw_waitlist_joined`, split by `in_app_browser` and `utm_content`. The round timer also sends `baw_timer_started` with the session settings, to show how many visitors use it.
 
+The pad round has its own funnel: `baw_demo_opened` → `baw_demo_start_clicked` → `baw_demo_camera` (with `result`) → `baw_demo_started` → `baw_demo_completed` → `baw_waitlist_joined` with `place=demo`. `baw_demo_failed` gives the reason when it stops early. Split `baw_demo_camera` by `in_app_browser` to see whether TikTok's browser allows the camera. Compare signups between visitors who opened it and those who didn't, because the demo could distract people as well as convince them. Use `/#try` to link straight to it.
+
 ## Action plan
 
 **Before launch**

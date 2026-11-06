@@ -12,7 +12,7 @@ const root = fileURLToPath(new URL(".", import.meta.url));
 const dist = join(root, "dist");
 const log = join(root, ".waitlist-dev.jsonl");
 const port = Number(process.env.PORT ?? 4173);
-const types = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".woff2": "font/woff2", ".txt": "text/plain", ".xml": "application/xml" };
+const types = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".woff2": "font/woff2", ".txt": "text/plain", ".xml": "application/xml", ".wasm": "application/wasm" };
 const seen = new Set();
 
 process.env.RESEND_API_KEY = "dev";
@@ -45,7 +45,8 @@ createServer(async (req, res) => {
   const file = path === "/" ? "index.html" : extname(path) ? path : `${path}.html`;
   try {
     const data = await readFile(join(dist, file));
-    res.setHeader("Content-Type", `${types[extname(file)] ?? "application/octet-stream"}; charset=utf-8`);
+    const type = types[extname(file)] ?? "application/octet-stream";
+    res.setHeader("Content-Type", type === "application/wasm" ? type : `${type}; charset=utf-8`);
     res.end(data);
   } catch {
     res.statusCode = 404;

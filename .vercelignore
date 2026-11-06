@@ -2,3 +2,4 @@ dev.mjs
 dist
 .waitlist-dev.jsonl
 SEO.md
+tests
